@@ -1,0 +1,41 @@
+
+.scoreboard {
+    border: 3px solid #ffffff;
+    width: 200px;
+    height: 100px;
+    font-size: 80px;
+    text-align: center;
+    color: #f1e55c;
+}
+
+.buttons {
+    border: 3px solid #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+}
+
+.button {
+    width: 70px;
+    height: 50px;
+    border: 3px solid #94ce5e;
+    text-align: center;
+    font-size: 15px;
+    color: #a678d9;
+
+}
+.button:hover {
+    background-color: #94ce5e;
+    color: white;
+}
+.button:disabled {
+    opacity: 0.5;
+}
+
+.scoreMore {
+    color: #65d6f8;
+    font-weight: bolder;
+}
