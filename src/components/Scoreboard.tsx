@@ -5,10 +5,10 @@ type ScoreboardPropsType = {
     score: number
 }
 export const Scoreboard = (props: ScoreboardPropsType) => {
-
+    const scoreClassName = props.score>=5 ? s.scoreMore : ""
     return (
         <div className={s.scoreboard}>
-            <div className={props.score>=5 ? s.scoreMore : ""}>{props.score}</div>
+            <div className={scoreClassName}>{props.score}</div>
         </div>
     );
 }
