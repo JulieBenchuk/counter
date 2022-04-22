@@ -21,7 +21,7 @@ function App() {
         <div className="App">
             <Scoreboard score={score}/>
             <span className={s.buttons}>
-                 <Button callback={onClickInc} title={"INC"} disabled={disabled}/>
+                <Button callback={onClickInc} title={"INC"} disabled={disabled}/>
                 <Button callback={onClickReset} title={"RESET"}/>
             </span>
 
