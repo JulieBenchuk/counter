@@ -1,5 +1,5 @@
 
-.scoreboard {
+.scoreBoard {
     border: 3px solid #ffffff;
     border-radius: 10px;
     width: 200px;
@@ -9,6 +9,44 @@
     color: #f1e55c;
     font-family: Courier;
     font-weight: bold;
+}
+/*.setBoard {
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 30px;
+    text-align: center;
+    color: #f1e55c;
+    font-family: Courier;
+    font-weight: bold;
+}*/
+.startAndMaxValue {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    color: #f1e55c;
+    font-family: Courier;
+    margin-top: 10px;
+    padding: 2px;
+
+}
+.startAndMaxValue input{
+    width: 50px;
+    text-align: center;
+    color: #f1e55c;
+    font-family: Courier;
+    background-color: #94ce5e;
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
 }
 
 .buttons {
