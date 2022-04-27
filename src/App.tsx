@@ -6,8 +6,8 @@ import {ScoreBoard} from "./components/ScoreBoard";
 import {SetBoard} from "./components/SetBoard";
 
 function App() {
-    const startScore: number = 0
-    const maxScore: number = 5
+    const [startScore, setStartScore] = useState<number>(0)
+    const [maxScore, setMaxScore] = useState<number>(0)
     const [score, setScore] = useState<number>(startScore)
     const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const [setDisabled, setSetDisabled] = useState<boolean>(false)
@@ -20,6 +20,20 @@ function App() {
         setScore(0)
         setIncDisabled(false)
     }
+    const onClickSetValue = () => {
+        localStorage.setItem("max", JSON.stringify(maxScore))
+        localStorage.setItem("start", JSON.stringify(startScore))
+
+        console.log(localStorage.getItem("max"))
+        console.log(localStorage.getItem("start"))
+    }
+    const onChangeStartValue = (value: number) => {
+        setStartScore(value)
+    }
+    const onChangeMaxValue = (value: number) => {
+        setMaxScore(value)
+    }
+
 
     return (
         <div className="App">
@@ -32,9 +46,9 @@ function App() {
             </div>
 
             <div className="block">
-                <SetBoard startValue={startScore} maxValue={maxScore}/>
+                <SetBoard startValue={startScore} maxValue={maxScore} onChangeStartValue={onChangeStartValue} onChangeMaxValue={onChangeMaxValue}/>
                 <span className={s.buttons}>
-                    <Button callback={()=>{}} title={"SET"} disabled={setDisabled}/>
+                    <Button callback={onClickSetValue} title={"SET"} disabled={setDisabled}/>
                 </span>
             </div>
         </div>
