@@ -5,28 +5,32 @@ import {Button} from "./components/Button";
 import s from "./components/components.module.css"
 
 function App() {
-    const startScore = 0
-    const maxScore = 5
+    const startScore: number = 0
+    const maxScore: number = 5
     const [score, setScore] = useState<number>(startScore)
-    const [disabled, setDisabled] = useState<boolean>(false)
+    const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const onClickInc = () => {
-        const newScore = score+1
+        const newScore = score + 1
         setScore(newScore)
-        newScore === maxScore && setDisabled(true)
+        newScore === maxScore && setIncDisabled(true)
     }
     const onClickReset = () => {
         setScore(0)
-        setDisabled(false)
+        setIncDisabled(false)
     }
 
     return (
         <div className="App">
-            <Scoreboard score={score}/>
-            <span className={s.buttons}>
-                <Button callback={onClickInc} title={"INC"} disabled={disabled} />
-                <Button callback={onClickReset} title={"RESET"} />
-            </span>
+            <div className="block">
+                <Scoreboard score={score}/>
+                <span className={s.buttons}>
+                    <Button callback={onClickInc} title={"INC"} disabled={incDisabled}/>
+                    <Button callback={onClickReset} title={"RESET"}/>
+                </span>
+            </div>
+            <div className="block">
 
+            </div>
         </div>
     );
 }

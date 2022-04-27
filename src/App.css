@@ -1,4 +1,8 @@
 .App {
+    display: flex;
+
+}
+.block {
     width: 300px;
     height: 300px;
     display: flex;
@@ -10,3 +14,4 @@
     background-color: #a678d9;
     border-radius: 10px;
 }
+
