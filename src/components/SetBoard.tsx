@@ -4,11 +4,11 @@ import s from "./components.module.css"
 type SetBoardPropsType = {
     startValue: number
     maxValue: number
+    errorValue: boolean
     onChangeStartValue: (value: number)=> void
     onChangeMaxValue: (value: number)=>void
 }
 export const SetBoard = (props: SetBoardPropsType) => {
-    /*const scoreClassName = props.startValue===props.maxValue ? s.scoreMore : "" //!!!!!!!!!*/
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.onChangeStartValue(e.currentTarget.valueAsNumber)
     }
