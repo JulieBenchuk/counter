@@ -19,11 +19,11 @@ export const SetBoard = (props: SetBoardPropsType) => {
         <div>
             <div className={s.startAndMaxValue}>
                 <span>max value</span>
-                <input type="number" onChange={onChangeMaxValue} value={props.maxValue}/>
+                <input type="number" onChange={onChangeMaxValue} value={props.maxValue} className={props.errorValue ? s.errorInput : ""}/>
             </div>
             <div className={s.startAndMaxValue}>
                 <span>start value</span>
-                <input type="number" onChange={onChangeStartValue} value={props.startValue}/>
+                <input type="number" onChange={onChangeStartValue} value={props.startValue} className={props.errorValue ? s.errorInput : ""}/>
             </div>
         </div>
     );

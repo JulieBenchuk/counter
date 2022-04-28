@@ -30,6 +30,7 @@ function App() {
         localStorage.setItem("max", JSON.stringify(maxScore))
         localStorage.setItem("start", JSON.stringify(startScore))
         setValue(startScore)
+        setIncDisabled(false)
     }
     const onChangeStartValue = (value: number) => {
         setStartScore(value)
@@ -59,7 +60,9 @@ function App() {
                           onChangeMaxValue={onChangeMaxValue}
                           errorValue={errorValue}/>
                 <span className={s.buttons}>
-                    <Button callback={onClickSetValue} title={"SET"} disabled={errorValue}/>
+                    <Button callback={onClickSetValue}
+                            title={"SET"}
+                            disabled={errorValue}/>
                 </span>
             </div>
         </div>

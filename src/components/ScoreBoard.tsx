@@ -13,7 +13,9 @@ export const ScoreBoard = (props: ScoreBoardPropsType) => {
     const setMessage = "enter values and press 'set'"
     return (
         <div className={s.scoreBoard}>
-            <div className={scoreClassName}>{props.errorValue ? errorMessage : props.value}</div>
+            <div className={scoreClassName}>
+                {props.errorValue ? errorMessage : props.value}
+            </div>
         </div>
     );
 }
