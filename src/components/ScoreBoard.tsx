@@ -10,7 +10,7 @@ type ScoreBoardPropsType = {
 }
 export const ScoreBoard = (props: ScoreBoardPropsType) => {
     const scoreClassName = props.errorValue || props.scoreMessage!==props.value ? s.errorMessageBoard : (props.value===props.maxScore) ? s.scoreMore  : ""
-    const errorMessage = "invalid input!"
+    const errorMessage = "invalid input!!!"
     return (
         <div className={s.scoreBoard}>
             <div className={scoreClassName}>
