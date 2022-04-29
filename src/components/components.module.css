@@ -1,5 +1,8 @@
 
 .scoreBoard {
+    display: grid;
+    align-content: center;
+    justify-content: center;
     border: 3px solid #ffffff;
     border-radius: 10px;
     width: 200px;
@@ -12,8 +15,11 @@
 }
 
 .errorMessageBoard {
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bolder;
     color: #ec1c84;
+    background-color: #f1e55c;
+    width: 150px;
 
 }
 

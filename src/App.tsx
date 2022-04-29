@@ -12,7 +12,6 @@ function App() {
     const [scoreMessage, setScoreMessage] = useState<number|string>("enter values and press 'set'")
     const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const [resetDisabled, setResetDisabled] = useState<boolean>(false)
-    /*const [setDisabled, setSetDisabled] = useState<boolean>(false)*/
     const errorValue = maxScore<=startScore || startScore<0
     useEffect(()=>{
         localStorage.setItem("start", JSON.stringify(startScore))
@@ -32,8 +31,6 @@ function App() {
         setScoreMessage(startScore)
     }
     const onClickSetValue = () => {
-        localStorage.setItem("max", JSON.stringify(maxScore))
-        localStorage.setItem("start", JSON.stringify(startScore))
         setValue(startScore)
         setScoreMessage(startScore)
         setIncDisabled(false)
