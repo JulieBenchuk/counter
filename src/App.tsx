@@ -4,11 +4,17 @@ import {Button} from "./components/Button";
 import s from "./components/components.module.css"
 import {ScoreBoard} from "./components/ScoreBoard";
 import {SetBoard} from "./components/SetBoard";
-
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "./BLL/store";
 function App() {
+    const value = useSelector<AppStateType, number>(state=>state.counter.value)
+    const dispatch = useDispatch()
+
+
+
     const [startScore, setStartScore] = useState<number>(0)
     const [maxScore, setMaxScore] = useState<number>(5)
-    const [value, setValue] = useState<number>(startScore)
+/*    const [value, setValue] = useState<number>(startScore)*/
     const [scoreMessage, setScoreMessage] = useState<number|string>("enter values and press 'set'")
     const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const [resetDisabled, setResetDisabled] = useState<boolean>(false)
@@ -37,7 +43,7 @@ function App() {
         setResetDisabled(false)
     }
     const onChangeStartValue = (value: number) => {
-        setStartScore(value)
+       /* setStartScore(value)*/
         setScoreMessage("enter values and press 'set'")
         setIncDisabled(true)
         setResetDisabled(true)

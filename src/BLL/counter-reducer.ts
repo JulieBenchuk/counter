@@ -1,8 +1,9 @@
 export const initialState = {
-    value: 0
+    value: 100
 }
 type initialStateType = typeof initialState
 
-export const counterReducer = (state: initialStateType, action: any) => {
+export const counterReducer = (state: initialStateType, action: any): initialStateType => {
     return state
 }
+
