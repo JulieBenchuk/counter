@@ -9,7 +9,8 @@ function App() {
     const [startScore, setStartScore] = useState<number>(0)
     const [maxScore, setMaxScore] = useState<number>(5)
     const [value, setValue] = useState<number>(startScore)
-    const [scoreMessage, setScoreMessage] = useState<number|string>("enter values and press 'set'")
+    const startMessage = "enter values and press 'set'"
+    const [scoreMessage, setScoreMessage] = useState<number|string>(startMessage)
     const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const [resetDisabled, setResetDisabled] = useState<boolean>(false)
     const errorValue = maxScore<=startScore || startScore<0
@@ -38,13 +39,13 @@ function App() {
     }
     const onChangeStartValue = (value: number) => {
         setStartScore(value)
-        setScoreMessage("enter values and press 'set'")
+        setScoreMessage(startMessage)
         setIncDisabled(true)
         setResetDisabled(true)
     }
     const onChangeMaxValue = (value: number) => {
         setMaxScore(value)
-        setScoreMessage("enter values and press 'set'")
+        setScoreMessage(startMessage)
         setIncDisabled(true)
         setResetDisabled(true)
     }
