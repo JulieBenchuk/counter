@@ -4,9 +4,6 @@ import {counterReducer} from "./counter-reducer";
 export const rootReducer = combineReducers({
     counter: counterReducer
 })
-export type AppRootStateType = {
-    startScore: number
-    maxScore: number
-    value: number
-}
+export type AppRootStateType = ReturnType<typeof rootReducer>
 export const store = legacy_createStore(rootReducer)
+type AppStoreType = typeof store

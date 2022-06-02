@@ -9,11 +9,13 @@ import {AppRootStateType, store} from "./BLL/store";
 
 function AppWithRedux() {
     const dispatch = useDispatch()
-    const counter = useSelector<AppRootStateType, AppRootStateType>(state=>state)
+    const startScore = useSelector<AppRootStateType, number>(state=>state.counter.startScore)
+    const maxScore = useSelector<AppRootStateType, number>(state=>state.counter.maxScore)
+    const value = useSelector<AppRootStateType, number>(state=>state.counter.value)
 
-    const [startScore, setStartScore] = useState<number>(0)
-    const [maxScore, setMaxScore] = useState<number>(5)
-    const [value, setValue] = useState<number>(startScore)
+/*    const [startScore, setStartScore] = useState<number>(0)
+    const [maxScore, setMaxScore] = useState<number>(5)*/
+/*    const [value, setValue] = useState<number>(startScore)*/
     const [scoreMessage, setScoreMessage] = useState<number|string>("enter values and press 'set'")
     const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const [resetDisabled, setResetDisabled] = useState<boolean>(false)

@@ -5,13 +5,20 @@ let initialState = {
     maxScore: 5,
     value: 0
 }
-type IncActionType = { type: "INC", value: number }
-export const IncActionAC = (value: string) => {
-    return {type: "INC", value: value}
+ type initialStateType = {
+    startScore: number
+    maxScore: number
+    value: number
 }
-export const counterReducer = (state: AppRootStateType = initialState, action: IncActionType) => {
+type IncActionType = { type: "INC"}
+export type ActionTypes = IncActionType /// add all types!!!!!
+export const IncAC = (value: string) => {
+    return {type: "INC"} as const
+}
+export const counterReducer = (state: initialStateType = initialState, action: ActionTypes): initialStateType => {
     switch (action.type) {
         case "INC":
-            return {...state, value: action.value + 1}
+            return {...state, value: state.value + 1};
+        default: return state
     }
 }
