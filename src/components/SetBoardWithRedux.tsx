@@ -2,20 +2,20 @@ import React, {ChangeEvent} from 'react';
 import s from "./components.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../BLL/store";
+import {SetMaxScoreAC, SetStartScoreAC} from "../BLL/counter-reducer";
 
 type SetBoardWithReduxPropsType = {
     errorValue: boolean
-    onChangeStartValue: (value: number)=> void
-    onChangeMaxValue: (value: number)=>void
 }
 export const SetBoardWithRedux = (props: SetBoardWithReduxPropsType) => {
+    const dispatch = useDispatch()
     const startScore = useSelector<AppRootStateType, number>(state=>state.counter.startScore)
     const maxScore = useSelector<AppRootStateType, number>(state=>state.counter.maxScore)
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.onChangeStartValue(e.currentTarget.valueAsNumber)
+        dispatch(SetStartScoreAC(e.currentTarget.valueAsNumber))
     }
     const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.onChangeMaxValue(e.currentTarget.valueAsNumber)
+        dispatch(SetMaxScoreAC(e.currentTarget.valueAsNumber))
     }
     return (
         <div>

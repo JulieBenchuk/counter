@@ -4,7 +4,7 @@ import s from "./components.module.css"
 type ButtonWithReduxPropsType = {
     title: string
     callback: () => void
-    disabled?: boolean
+    disabled: boolean
 
 }
 export const ButtonWithRedux = (props: ButtonWithReduxPropsType) => {

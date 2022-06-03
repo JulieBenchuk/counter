@@ -43,21 +43,27 @@ type SetValueActionType = { type: "SET-VALUE" }
 export const SetValueAC = () => {
     return {type: "SET-VALUE"} as const
 }
-type SetStartScoreActionType = { type: "SET-START-SCORE", value: number }
+type SetStartScoreActionType = { type: "CHANGE-START-SCORE", value: number }
 export const SetStartScoreAC = (value: number) => {
-    return {type: "SET-START-SCORE", value: value} as const
+    return {type: "CHANGE-START-SCORE", value: value} as const
 }
-type SetMaxScoreActionType = { type: "SET-MAX-SCORE", value: number }
+type SetMaxScoreActionType = { type: "CHANGE-MAX-SCORE", value: number }
 export const SetMaxScoreAC = (value: number) => {
-    return {type: "SET-MAX-SCORE", value: value} as const
+    return {type: "CHANGE-MAX-SCORE", value: value} as const
 }
 export const counterReducer = (state: initialStateType = initialState, action: ActionTypes): initialStateType => {
     switch (action.type) {
         case "INC":
             let newValue = state.value + 1;
-            return {...state, value: newValue, incDisabled: newValue === state.maxScore, scoreMessage: newValue};
+            return {...state,
+                value: newValue,
+                incDisabled: newValue === state.maxScore,
+                scoreMessage: newValue};
         case "RESET":
-            return {...state, value: state.startScore, scoreMessage: state.startScore, incDisabled: false};
+            return {...state,
+                value: state.startScore,
+                scoreMessage: state.startScore,
+                incDisabled: false};
         case "SET-VALUE":
             return {
                 ...state,
@@ -66,7 +72,7 @@ export const counterReducer = (state: initialStateType = initialState, action: A
                 incDisabled: false,
                 resetDisabled: false
             }
-        case "SET-START-SCORE":
+        case "CHANGE-START-SCORE":
             return {
                 ...state,
                 value: action.value,
@@ -75,7 +81,7 @@ export const counterReducer = (state: initialStateType = initialState, action: A
                 incDisabled: true,
                 resetDisabled: true
             };
-        case "SET-MAX-SCORE":
+        case "CHANGE-MAX-SCORE":
             return {
                 ...state,
                 value: action.value,

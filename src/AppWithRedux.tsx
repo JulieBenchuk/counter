@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
 import s from "./components/components.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./BLL/store";
-import {IncAC, ResetAC, SetMaxScoreAC, SetStartScoreAC, SetValueAC} from "./BLL/counter-reducer";
+import {IncAC, ResetAC, SetValueAC} from "./BLL/counter-reducer";
 import {ScoreBoardWithRedux} from "./components/ScoreBoardWithRedux";
 import {SetBoardWithRedux} from "./components/SetBoardWithRedux";
 import {ButtonWithRedux} from "./components/ButtonWithRedux";
@@ -16,12 +16,6 @@ function AppWithRedux() {
     const resetDisabled = useSelector<AppRootStateType, boolean>(state=>state.counter.resetDisabled)
 
     const errorValue = maxScore<=startScore || startScore<0
-/*    useEffect(()=>{
-        localStorage.setItem("start", JSON.stringify(startScore))
-    }, [startScore])
-    useEffect(()=>{
-        localStorage.setItem("max", JSON.stringify(maxScore))
-    }, [maxScore])*/
     const onClickInc = () => {
         dispatch(IncAC())
     }
@@ -30,12 +24,6 @@ function AppWithRedux() {
     }
     const onClickSetValue = () => {
         dispatch(SetValueAC())
-    }
-    const onChangeStartValue = (value: number) => {
-        dispatch(SetStartScoreAC(value))
-    }
-    const onChangeMaxValue = (value: number) => {
-        dispatch(SetMaxScoreAC(value))
     }
     return (
         <div className="App">
@@ -50,8 +38,6 @@ function AppWithRedux() {
 
             <div className="block">
                 <SetBoardWithRedux
-                          onChangeStartValue={onChangeStartValue}
-                          onChangeMaxValue={onChangeMaxValue}
                           errorValue={errorValue}/>
                 <span className={s.buttons}>
                     <ButtonWithRedux callback={onClickSetValue}
