@@ -1,9 +1,18 @@
 const startMessage = "enter values and press 'set'"
-
+let preloadedMaxScore = 0;
+const maxScoreAsString = localStorage.getItem("max")
+if (maxScoreAsString) {
+    preloadedMaxScore = JSON.parse(maxScoreAsString)
+}
+let preloadedStartScore = 0;
+const startScoreAsString = localStorage.getItem("start")
+if (startScoreAsString) {
+    preloadedStartScore = JSON.parse(startScoreAsString)
+}
 let initialState = {
-    startScore: 0,
-    maxScore: 5,
-    value: 0,
+    startScore: preloadedStartScore, // number from local storage (prev session)
+    maxScore: preloadedMaxScore, // number from local storage
+    value: preloadedStartScore,
     incDisabled: false,
     resetDisabled: false,
     scoreMessage: startMessage

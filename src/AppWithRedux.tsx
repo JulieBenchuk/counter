@@ -16,12 +16,12 @@ function AppWithRedux() {
     const resetDisabled = useSelector<AppRootStateType, boolean>(state=>state.counter.resetDisabled)
 
     const errorValue = maxScore<=startScore || startScore<0
-    useEffect(()=>{
+/*    useEffect(()=>{
         localStorage.setItem("start", JSON.stringify(startScore))
     }, [startScore])
     useEffect(()=>{
         localStorage.setItem("max", JSON.stringify(maxScore))
-    }, [maxScore])
+    }, [maxScore])*/
     const onClickInc = () => {
         dispatch(IncAC())
     }
