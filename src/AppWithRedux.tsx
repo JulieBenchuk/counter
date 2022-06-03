@@ -1,24 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {Button} from "./components/Button";
 import s from "./components/components.module.css"
-import {ScoreBoard} from "./components/ScoreBoard";
-import {SetBoard} from "./components/SetBoard";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType, store} from "./BLL/store";
+import {AppRootStateType} from "./BLL/store";
+import {IncAC, ResetAC, SetMaxScoreAC, SetStartScoreAC, SetValueAC} from "./BLL/counter-reducer";
+import {ScoreBoardWithRedux} from "./components/ScoreBoardWithRedux";
+import {SetBoardWithRedux} from "./components/SetBoardWithRedux";
+import {ButtonWithRedux} from "./components/ButtonWithRedux";
 
 function AppWithRedux() {
     const dispatch = useDispatch()
     const startScore = useSelector<AppRootStateType, number>(state=>state.counter.startScore)
     const maxScore = useSelector<AppRootStateType, number>(state=>state.counter.maxScore)
-    const value = useSelector<AppRootStateType, number>(state=>state.counter.value)
+    const incDisabled = useSelector<AppRootStateType, boolean>(state=>state.counter.incDisabled)
+    const resetDisabled = useSelector<AppRootStateType, boolean>(state=>state.counter.resetDisabled)
 
-/*    const [startScore, setStartScore] = useState<number>(0)
-    const [maxScore, setMaxScore] = useState<number>(5)*/
-/*    const [value, setValue] = useState<number>(startScore)*/
-    const [scoreMessage, setScoreMessage] = useState<number|string>("enter values and press 'set'")
-    const [incDisabled, setIncDisabled] = useState<boolean>(false)
-    const [resetDisabled, setResetDisabled] = useState<boolean>(false)
     const errorValue = maxScore<=startScore || startScore<0
     useEffect(()=>{
         localStorage.setItem("start", JSON.stringify(startScore))
@@ -27,56 +23,38 @@ function AppWithRedux() {
         localStorage.setItem("max", JSON.stringify(maxScore))
     }, [maxScore])
     const onClickInc = () => {
-        const newValue = value + 1
-        setValue(newValue)
-        setScoreMessage(newValue)
-        newValue === maxScore && setIncDisabled(true)
+        dispatch(IncAC())
     }
     const onClickReset = () => {
-        setValue(startScore)
-        setIncDisabled(false)
-        setScoreMessage(startScore)
+        dispatch(ResetAC())
     }
     const onClickSetValue = () => {
-        setValue(startScore)
-        setScoreMessage(startScore)
-        setIncDisabled(false)
-        setResetDisabled(false)
+        dispatch(SetValueAC())
     }
     const onChangeStartValue = (value: number) => {
-        setStartScore(value)
-        setScoreMessage("enter values and press 'set'")
-        setIncDisabled(true)
-        setResetDisabled(true)
+        dispatch(SetStartScoreAC(value))
     }
     const onChangeMaxValue = (value: number) => {
-        setMaxScore(value)
-        setScoreMessage("enter values and press 'set'")
-        setIncDisabled(true)
-        setResetDisabled(true)
+        dispatch(SetMaxScoreAC(value))
     }
     return (
         <div className="App">
             <div className="block">
-                <ScoreBoard value={value}
-                            startScore={startScore}
-                            maxScore={maxScore}
-                            errorValue={errorValue}
-                            scoreMessage={scoreMessage}/>
+                <ScoreBoardWithRedux
+                            errorValue={errorValue}/>
                 <span className={s.buttons}>
-                    <Button callback={onClickInc} title={"INC"} disabled={incDisabled}/>
-                    <Button callback={onClickReset} title={"RESET"} disabled={resetDisabled}/>
+                    <ButtonWithRedux callback={onClickInc} title={"INC"} disabled={incDisabled}/>
+                    <ButtonWithRedux callback={onClickReset} title={"RESET"} disabled={resetDisabled}/>
                 </span>
             </div>
 
             <div className="block">
-                <SetBoard startValue={startScore}
-                          maxValue={maxScore}
+                <SetBoardWithRedux
                           onChangeStartValue={onChangeStartValue}
                           onChangeMaxValue={onChangeMaxValue}
                           errorValue={errorValue}/>
                 <span className={s.buttons}>
-                    <Button callback={onClickSetValue}
+                    <ButtonWithRedux callback={onClickSetValue}
                             title={"SET"}
                             disabled={errorValue}/>
                 </span>
