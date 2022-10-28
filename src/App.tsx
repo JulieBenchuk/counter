@@ -10,16 +10,11 @@ function App() {
     const [maxScore, setMaxScore] = useState<number>(5)
     const [value, setValue] = useState<number>(startScore)
     const startMessage = "enter values and press 'set'"
-    const [scoreMessage, setScoreMessage] = useState<number|string>(startMessage)
+    const [scoreMessage, setScoreMessage] = useState<number | string>(startMessage)
     const [incDisabled, setIncDisabled] = useState<boolean>(false)
     const [resetDisabled, setResetDisabled] = useState<boolean>(false)
-    const errorValue = maxScore<=startScore || startScore<0
-    useEffect(()=>{
-        localStorage.setItem("start", JSON.stringify(startScore))
-    }, [startScore])
-    useEffect(()=>{
-        localStorage.setItem("max", JSON.stringify(maxScore))
-    }, [maxScore])
+    const errorValue = maxScore <= startScore || startScore < 0
+
     const onClickInc = () => {
         const newValue = value + 1
         setValue(newValue)
@@ -49,8 +44,17 @@ function App() {
         setIncDisabled(true)
         setResetDisabled(true)
     }
+
+    useEffect(() => {
+        localStorage.setItem("start", JSON.stringify(startScore))
+    }, [startScore])
+    useEffect(() => {
+        localStorage.setItem("max", JSON.stringify(maxScore))
+    }, [maxScore])
+
     return (
         <div className="App">
+
             <div className="block">
                 <ScoreBoard value={value}
                             startScore={startScore}
@@ -75,6 +79,7 @@ function App() {
                             disabled={errorValue}/>
                 </span>
             </div>
+
         </div>
     );
 }

@@ -5,8 +5,8 @@ type SetBoardPropsType = {
     startValue: number
     maxValue: number
     errorValue: boolean
-    onChangeStartValue: (value: number)=> void
-    onChangeMaxValue: (value: number)=>void
+    onChangeStartValue: (value: number) => void
+    onChangeMaxValue: (value: number) => void
 }
 export const SetBoard = (props: SetBoardPropsType) => {
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,11 +19,13 @@ export const SetBoard = (props: SetBoardPropsType) => {
         <div>
             <div className={s.startAndMaxValue}>
                 <span>max value</span>
-                <input type="number" onChange={onChangeMaxValue} value={props.maxValue} className={props.errorValue ? s.errorInput : ""}/>
+                <input type="number" onChange={onChangeMaxValue} value={props.maxValue}
+                       className={props.errorValue ? s.errorInput : ""}/>
             </div>
             <div className={s.startAndMaxValue}>
                 <span>start value</span>
-                <input type="number" onChange={onChangeStartValue} value={props.startValue} className={props.errorValue ? s.errorInput : ""}/>
+                <input type="number" onChange={onChangeStartValue} value={props.startValue}
+                       className={props.errorValue ? s.errorInput : ""}/>
             </div>
         </div>
     );

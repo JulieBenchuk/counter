@@ -8,10 +8,10 @@ type ScoreBoardWithReduxPropsType = {
 }
 export const ScoreBoardWithRedux = (props: ScoreBoardWithReduxPropsType) => {
 
-    const maxScore = useSelector<AppRootStateType, number>(state=>state.counter.maxScore)
-    const value = useSelector<AppRootStateType, number>(state=>state.counter.value)
-    const scoreMessage = useSelector<AppRootStateType, number|string>(state=>state.counter.scoreMessage)
-    const scoreClassName = props.errorValue || scoreMessage!==value ? s.errorMessageBoard : (value===maxScore) ? s.scoreMore  : ""
+    const maxScore = useSelector<AppRootStateType, number>(state => state.counter.maxScore)
+    const value = useSelector<AppRootStateType, number>(state => state.counter.value)
+    const scoreMessage = useSelector<AppRootStateType, number | string>(state => state.counter.scoreMessage)
+    const scoreClassName = props.errorValue || scoreMessage !== value ? s.errorMessageBoard : (value === maxScore) ? s.scoreMore : ""
     const errorMessage = "invalid input!!!"
     return (
         <div className={s.scoreBoard}>

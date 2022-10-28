@@ -9,8 +9,8 @@ type SetBoardWithReduxPropsType = {
 }
 export const SetBoardWithRedux = (props: SetBoardWithReduxPropsType) => {
     const dispatch = useDispatch()
-    const startScore = useSelector<AppRootStateType, number>(state=>state.counter.startScore)
-    const maxScore = useSelector<AppRootStateType, number>(state=>state.counter.maxScore)
+    const startScore = useSelector<AppRootStateType, number>(state => state.counter.startScore)
+    const maxScore = useSelector<AppRootStateType, number>(state => state.counter.maxScore)
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(SetStartScoreAC(e.currentTarget.valueAsNumber))
     }
@@ -21,11 +21,13 @@ export const SetBoardWithRedux = (props: SetBoardWithReduxPropsType) => {
         <div>
             <div className={s.startAndMaxValue}>
                 <span>max value</span>
-                <input type="number" onChange={onChangeMaxValue} value={maxScore} className={props.errorValue ? s.errorInput : ""}/>
+                <input type="number" onChange={onChangeMaxValue} value={maxScore}
+                       className={props.errorValue ? s.errorInput : ""}/>
             </div>
             <div className={s.startAndMaxValue}>
                 <span>start value</span>
-                <input type="number" onChange={onChangeStartValue} value={startScore} className={props.errorValue ? s.errorInput : ""}/>
+                <input type="number" onChange={onChangeStartValue} value={startScore}
+                       className={props.errorValue ? s.errorInput : ""}/>
             </div>
         </div>
     );

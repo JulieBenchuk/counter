@@ -1,7 +1,5 @@
 import React from 'react';
 import s from "./components.module.css"
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../BLL/store";
 
 type ButtonPropsType = {
     title: string

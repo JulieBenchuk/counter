@@ -10,12 +10,12 @@ import {ButtonWithRedux} from "./components/ButtonWithRedux";
 
 function AppWithRedux() {
     const dispatch = useDispatch()
-    const startScore = useSelector<AppRootStateType, number>(state=>state.counter.startScore)
-    const maxScore = useSelector<AppRootStateType, number>(state=>state.counter.maxScore)
-    const incDisabled = useSelector<AppRootStateType, boolean>(state=>state.counter.incDisabled)
-    const resetDisabled = useSelector<AppRootStateType, boolean>(state=>state.counter.resetDisabled)
+    const startScore = useSelector<AppRootStateType, number>(state => state.counter.startScore)
+    const maxScore = useSelector<AppRootStateType, number>(state => state.counter.maxScore)
+    const incDisabled = useSelector<AppRootStateType, boolean>(state => state.counter.incDisabled)
+    const resetDisabled = useSelector<AppRootStateType, boolean>(state => state.counter.resetDisabled)
 
-    const errorValue = maxScore<=startScore || startScore<0
+    const errorValue = maxScore <= startScore || startScore < 0
     const onClickInc = () => {
         dispatch(IncAC())
     }
@@ -29,7 +29,7 @@ function AppWithRedux() {
         <div className="App">
             <div className="block">
                 <ScoreBoardWithRedux
-                            errorValue={errorValue}/>
+                    errorValue={errorValue}/>
                 <span className={s.buttons}>
                     <ButtonWithRedux callback={onClickInc} title={"INC"} disabled={incDisabled}/>
                     <ButtonWithRedux callback={onClickReset} title={"RESET"} disabled={resetDisabled}/>
@@ -38,11 +38,11 @@ function AppWithRedux() {
 
             <div className="block">
                 <SetBoardWithRedux
-                          errorValue={errorValue}/>
+                    errorValue={errorValue}/>
                 <span className={s.buttons}>
                     <ButtonWithRedux callback={onClickSetValue}
-                            title={"SET"}
-                            disabled={errorValue}/>
+                                     title={"SET"}
+                                     disabled={errorValue}/>
                 </span>
             </div>
         </div>

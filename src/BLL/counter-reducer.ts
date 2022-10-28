@@ -55,15 +55,19 @@ export const counterReducer = (state: initialStateType = initialState, action: A
     switch (action.type) {
         case "INC":
             let newValue = state.value + 1;
-            return {...state,
+            return {
+                ...state,
                 value: newValue,
                 incDisabled: newValue === state.maxScore,
-                scoreMessage: newValue};
+                scoreMessage: newValue
+            };
         case "RESET":
-            return {...state,
+            return {
+                ...state,
                 value: state.startScore,
                 scoreMessage: state.startScore,
-                incDisabled: false};
+                incDisabled: false
+            };
         case "SET-VALUE":
             return {
                 ...state,
